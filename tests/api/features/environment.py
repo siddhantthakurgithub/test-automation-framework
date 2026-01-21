@@ -1,17 +1,16 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+import os
+from dotenv import load_dotenv
 
 def before_all(context):
-    options = Options()
-    options.add_argument("--start-maximized")
+    # Load .env file
+    load_dotenv()  # loads from root .env by default
 
-    context.driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=options
-    )
+    context.base_url = os.getenv("BASE_URL")
+    context.token = os.getenv("TOKEN")
 
-def after_all(context):
-    if hasattr(context, "driver"):
-        context.driver.quit()
+    context.headers = {
+        "Content-Type": "application/json"
+    }
+
+    if context.token:
+        context.headers["Authorization"] = f"Bearer {context.token}"
