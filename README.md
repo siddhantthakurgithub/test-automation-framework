@@ -27,7 +27,7 @@ Tests/
 │   │   ├── test_1.feature
 │   │   └── test_2.feature
 │   ├── pages/
-│   │   └── google_page.py
+│   │   └── test_page.py
 │   ├── logs/                       # Logs for UI tests
 │   └── reports/                    # Reports for UI tests
 └── e2e/
