@@ -92,14 +92,13 @@ behave --tags=@smoke
 
 * Logs automatically saved in `logs/` folders
 * Screenshots for UI failures saved in `logs/` folders
-* Reports can be generated in JSON or JUnit format via `behave.ini` in each module
+* Reports can be generated in JSON format via `behave.ini` in each module
 
 ---
 
 ## Hooks & Fixtures
 
 * **Global hooks**: `before_all`, `after_all` for setup/cleanup
-* **Scenario hooks**: `before_scenario`, `after_scenario` for fixtures (e.g., test data setup, cleanup)
 * **Step hooks**: `after_step` for automatic logging, API response logging, and UI screenshot capture
 * **Context fixtures**: `context.setup_data` can store temporary data per scenario
 
@@ -116,11 +115,3 @@ behave --tags=@smoke
 * Ready for CI/CD integration
 
 ---
-
-## Interview Talking Points
-
-* Explain BDD approach using feature files + step definitions
-* `.env` config for environment-specific URLs and tokens
-* Hooks and fixtures for automated setup and cleanup
-* Tag-driven execution and modular folder structure
-* Automatic logging, reporting, and screenshot capture for failures
