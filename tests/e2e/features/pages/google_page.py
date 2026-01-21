@@ -20,7 +20,7 @@ class GooglePage:
         box.send_keys(query)
         box.send_keys(Keys.RETURN)
         logging.info(f"Searched for '{query}'")
-        time.sleep(2)  # simple wait for results to load
+        time.sleep(2)
 
     def validate_results(self, query):
         results = self.driver.find_elements(*self.result_headings)
