@@ -1,103 +1,126 @@
-Automation Framework (Behave + Python + Requests + Selenium)
+# Automation Framework (Behave + Python + Requests + Selenium)
 
-BDD-based framework for API and UI testing with:
-	•	API automation (GET/POST)
-	•	UI automation (Selenium WebDriver)
-	•	Tag-driven execution (@api, @ui, @smoke)
-	•	Environment config via .env
-	•	Automatic logging and reporting
-	•	Setup/cleanup fixtures
+This framework supports **API, UI, and E2E testing** using **Behave (BDD)**. It is structured for modular, scalable automation with automatic logging, reporting, and tag-driven execution.
 
-⸻
+---
 
-Folder Structure
+## Folder Structure
 
+```
 Tests/
-api/
-    |-- features/
-    │   |-- environment.py
-    │   |-- steps/
-    │   │   |-- test_1_steps.py
-    │   │   |-- test_2_steps.py
-    │   |-- test_1.feature
-    │   |-- test_2.feature
-    |-- logs/
-    |-- reports/
-ui/
-    |-- features/
-    │   |-- environment.py
-    │   |-- steps/
-    │   │   |-- test_1_steps.py
-    │   │   |-- test_2_steps.py
-    │   |-- test_1.feature
-    │   |-- test_2.feature
-    |-- logs/
-    |-- reports/
-e2e/
-    |-- features/
-    │   |-- environment.py
-    │   |-- steps/
-    │   │   |-- test_1_steps.py
-    │   │   |-- test_2_steps.py
-    │   |-- test_1.feature
-    │   |-- test_2.feature
-    |-- logs/
-    |-- reports/
+├── api/
+│   ├── features/
+│   │   ├── environment.py         # Hooks: setup, cleanup, logging
+│   │   ├── steps/
+│   │   │   ├── test_1_steps.py
+│   │   │   └── test_2_steps.py
+│   │   ├── test_1.feature
+│   │   └── test_2.feature
+│   ├── logs/                       # Logs for API tests
+│   └── reports/                    # Reports for API tests
+├── ui/
+│   ├── features/
+│   │   ├── environment.py         # Hooks: setup, cleanup, logging, screenshots
+│   │   ├── steps/
+│   │   │   ├── test_1_steps.py
+│   │   │   └── test_2_steps.py
+│   │   ├── test_1.feature
+│   │   └── test_2.feature
+│   ├── logs/                       # Logs for UI tests
+│   └── reports/                    # Reports for UI tests
+└── e2e/
+    ├── features/
+    │   ├── environment.py         # Hooks: setup, cleanup, logging
+    │   ├── steps/
+    │   │   ├── test_1_steps.py
+    │   │   └── test_2_steps.py
+    │   ├── test_1.feature
+    │   └── test_2.feature
+    ├── logs/                       # Logs for E2E tests
+    └── reports/                    # Reports for E2E tests
+```
 
+---
 
-⸻
+## Setup
 
-Setup
+1. Install Python 3.9+
+2. Install dependencies:
 
-Install dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 
-requirements.txt:
+`requirements.txt` example:
 
+```
 behave==1.2.6
 requests==2.31.0
 selenium==4.15.0
 webdriver-manager==5.5.0
 python-dotenv==1.0.0
+```
 
-.env file:
+3. Create a `.env` file:
 
-BASE_URL=https://jsonplaceholder.typicode.com
-TOKEN=
+```
+BASE_URL=https://your-api-base-url.com
+TOKEN=your_auth_token
+```
 
+---
 
-⸻
+## How to Run
 
-How to Run
+```bash
+# Run all API tests
+behave Tests/api/features
 
-# Run all tests
-behave
+# Run only UI tests
+behave Tests/ui/features
 
-# Run only API tests
-behave --tags=@api
+# Run only E2E tests
+behave Tests/e2e/features
 
-# Run specific scenario
-behave --tags=@create_user
+# Run specific tagged scenario
+behave --tags=@smoke
+```
 
+---
 
-⸻
+## Logging & Reporting
 
-Logging & Reporting
-	•	Logs: logs/test.log
-	•	Screenshots for UI failures: logs/
-	•	JSON report: reports/report.json (via behave.ini)
-⸻
+* Logs automatically saved in `logs/` folders
+* Screenshots for UI failures saved in `logs/` folders
+* Reports can be generated in JSON or JUnit format via `behave.ini` in each module
 
-Hooks & Fixtures
-	•	before_all / after_all: global setup/cleanup
-	•	before_scenario / after_scenario: scenario-level fixtures
-	•	after_step: auto logging + screenshot capture
-	•	context.setup_data: temporary storage for scenario-specific data
+---
 
-⸻
+## Hooks & Fixtures
 
-Key Features
-	•	BDD approach using Behave
-	•	Automatic logging and reporting
-	•	Tag-driven execution
+* **Global hooks**: `before_all`, `after_all` for setup/cleanup
+* **Scenario hooks**: `before_scenario`, `after_scenario` for fixtures (e.g., test data setup, cleanup)
+* **Step hooks**: `after_step` for automatic logging, API response logging, and UI screenshot capture
+* **Context fixtures**: `context.setup_data` can store temporary data per scenario
+
+---
+
+## Key Features
+
+* BDD approach with Behave
+* Modular structure: API, UI, E2E separated
+* Environment configuration via `.env`
+* Automatic logging and reporting
+* Tag-driven execution for selective tests
+* Scenario-level setup/cleanup fixtures
+* Ready for CI/CD integration
+
+---
+
+## Interview Talking Points
+
+* Explain BDD approach using feature files + step definitions
+* `.env` config for environment-specific URLs and tokens
+* Hooks and fixtures for automated setup and cleanup
+* Tag-driven execution and modular folder structure
+* Automatic logging, reporting, and screenshot capture for failures
