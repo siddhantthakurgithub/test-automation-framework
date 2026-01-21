@@ -13,16 +13,36 @@ BDD-based framework for API and UI testing with:
 Folder Structure
 
 Tests/
-└── api/
-    ├── features/
-    │   ├── environment.py
-    │   ├── steps/
-    │   │   ├── api_users_steps.py
-    │   │   └── api_create_user_steps.py
-    │   ├── api_users.feature
-    │   └── api_create_user.feature
-    ├── logs/
-    └── reports/
+api/
+    |-- features/
+    │   |-- environment.py
+    │   |-- steps/
+    │   │   |-- test_1_steps.py
+    │   │   |-- test_2_steps.py
+    │   |-- test_1.feature
+    │   |-- test_2.feature
+    |-- logs/
+    |-- reports/
+ui/
+    |-- features/
+    │   |-- environment.py
+    │   |-- steps/
+    │   │   |-- test_1_steps.py
+    │   │   |-- test_2_steps.py
+    │   |-- test_1.feature
+    │   |-- test_2.feature
+    |-- logs/
+    |-- reports/
+e2e/
+    |-- features/
+    │   |-- environment.py
+    │   |-- steps/
+    │   │   |-- test_1_steps.py
+    │   │   |-- test_2_steps.py
+    │   |-- test_1.feature
+    │   |-- test_2.feature
+    |-- logs/
+    |-- reports/
 
 
 ⸻
