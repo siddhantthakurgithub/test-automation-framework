@@ -76,8 +76,8 @@ python-dotenv==1.0.0
 3. Create a `.env` file:
 
 ```
-BASE_URL=https://your-api-base-url.com
-TOKEN=your_auth_token
+BASE_URL_API = https://jsonplaceholder.typicode.com (FOR REFERENCE ONLY)
+BASE_URL_UI = https://www.google.com (FOR REFERENCE ONLY)
 ```
 
 ---
