@@ -86,16 +86,14 @@ TOKEN=your_auth_token
 
 ```bash
 # Run all API tests
-behave Tests/api/features
+behave api/features
 
 # Run only UI tests
-behave Tests/ui/features
-
-# Run only E2E tests
-behave Tests/e2e/features
+behave ui/features
 
 # Run specific tagged scenario
-behave --tags=@smoke
+behave --tags=@ui
+behave --tags=@api
 ```
 
 ---
