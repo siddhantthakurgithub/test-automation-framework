@@ -92,8 +92,9 @@ behave api/features
 behave ui/features
 
 # Run specific tagged scenario
-behave --tags=@ui
-behave --tags=@api
+From the "tests" folder of repository:
+behave ui/features --tags=@ui
+behave api/features --tags=@api
 ```
 
 ---
