@@ -4,3 +4,4 @@ passwords.txt
 reports
 logs
 .vscode 
+.env
