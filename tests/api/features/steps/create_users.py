@@ -9,7 +9,7 @@ def step_api_endpoint(context, endpoint=UserEndpoints.CREATE_USER):
     """
     Prepare the URL and payload for the POST request.
     """
-    context.url = f"{context.base_url}{endpoint}]"
+    context.url = f"{context.base_url}{endpoint}"
     context.user_payload = context.test_data["users"]["valid"]
     logging.info(f"Prepared POST endpoint: {context.url} with payload {context.user_payload}")
 
