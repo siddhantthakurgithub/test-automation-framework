@@ -30,16 +30,6 @@ Tests/
 │   │   └── test_page.py
 │   ├── logs/                       # Logs for UI tests
 │   └── reports/                    # Reports for UI tests
-└── e2e/
-    ├── features/
-    │   ├── environment.py         # Hooks: setup, cleanup, logging
-    │   ├── steps/
-    │   │   ├── test_1_steps.py
-    │   │   └── test_2_steps.py
-    │   ├── test_1.feature
-    │   └── test_2.feature
-    ├── logs/                       # Logs for E2E tests
-    └── reports/                    # Reports for E2E tests
 ```
 
 ---
