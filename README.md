@@ -7,29 +7,46 @@ This framework supports **API, UI, and E2E testing** using **Behave (BDD)**. It 
 ## Folder Structure
 
 ```
-Tests/
-├── api/
-│   ├── features/
-│   │   ├── environment.py         # Hooks: setup, cleanup, logging
-│   │   ├── steps/
-│   │   │   ├── test_1_steps.py
-│   │   │   └── test_2_steps.py
-│   │   ├── test_1.feature
-│   │   └── test_2.feature
-│   ├── logs/                       # Logs for API tests
-│   └── reports/                    # Reports for API tests
-├── ui/
-│   ├── features/
-│   │   ├── environment.py         # Hooks: setup, cleanup, logging, screenshots
-│   │   ├── steps/
-│   │   │   ├── test_1_steps.py
-│   │   │   └── test_2_steps.py
-│   │   ├── test_1.feature
-│   │   └── test_2.feature
-│   ├── pages/
-│   │   └── test_page.py
-│   ├── logs/                       # Logs for UI tests
-│   └── reports/                    # Reports for UI tests
+test-automation-framework/
+│
+├── tests/
+│   ├── api/
+│   │   ├── features/              # API feature files (Gherkin)
+│   │   │   ├── create_users.feature
+│   │   │   └── get_users.feature
+│   │   │
+│   │   ├── steps/                 # API step definitions
+│   │   │
+│   │   ├── endpoints/             # API endpoint definitions (paths only)
+│   │   │
+│   │   ├── environment.py         # API hooks (before_all, before_scenario)
+│   │   └── behave.ini             # API Behave config
+│   │
+│   ├── ui/
+│   │   ├── features/              # UI feature files
+│   │   │   └── google_search.feature
+│   │   │
+│   │   ├── pages/                 # Page Objects
+│   │   │
+│   │   ├── steps/                 # UI step definitions
+│   │   │
+│   │   ├── environment.py         # UI hooks
+│   │   └── behave.ini             # UI Behave config
+│
+├── data/
+│   └── user_payload.json          # Test data (JSON-based, generic)
+│
+├── utils/
+│   └── data_loader.py             # Generic utilities (JSON loaders, helpers)
+│
+├── logs/                          # Execution logs
+│
+├── venv/                          # Virtual environment (local only)
+│
+├── .env                           # Environment variables (BASE_URL, tokens)
+├── requirements.txt               # Python dependencies
+├── .gitignore
+└── README.md
 ```
 
 ---

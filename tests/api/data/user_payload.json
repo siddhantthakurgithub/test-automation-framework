@@ -1,0 +1,12 @@
+{
+    "valid": {
+      "name": "John Doe",
+      "username": "johndoe",
+      "email": "john.doe@example.com"
+    },
+    "invalid": {
+      "name": "",
+      "username": "jd",
+      "email": "bad-email"
+    }
+  }

@@ -1,6 +1,7 @@
 import os
 import logging
 from dotenv import load_dotenv
+from api.data.utils.data_loader import load_json
 
 # Ensure logs folder exists
 os.makedirs("logs", exist_ok=True)
@@ -25,6 +26,9 @@ def before_all(context):
 
     if context.token:
         context.headers["Authorization"] = f"Bearer {context.token}"
+        
+    context.test_data = {}
+    context.test_data["users"] = load_json("user_payload.json")
         
 def after_step(context, step):
     """Automatically log every step result"""

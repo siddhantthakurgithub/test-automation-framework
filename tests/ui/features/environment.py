@@ -23,9 +23,6 @@ def after_step(context, step):
     """Automatically log every step result"""
     if step.status == "failed":
         logging.error(f"Step failed: {step.name}")
-        # If API response exists, log it
-        if hasattr(context, "response"):
-            logging.error(f"Response body: {context.response.text}")
         # If UI driver exists, take screenshot
         if hasattr(context, "driver"):
             screenshot_file = f"logs/{step.name.replace(' ', '_')}.png"

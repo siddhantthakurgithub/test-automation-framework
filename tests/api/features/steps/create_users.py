@@ -1,19 +1,16 @@
 import requests
 import json
-from behave import given, when, then
 import logging
+from behave import given, when, then
+from endpoints.user_endpoint import UserEndpoints
 
 @given("the create user API endpoint is available")
-def step_api_endpoint(context):
+def step_api_endpoint(context, endpoint=UserEndpoints.CREATE_USER):
     """
     Prepare the URL and payload for the POST request.
     """
-    context.url = f"{context.base_url}/users"
-    context.user_payload = {
-        "name": "John Doe",
-        "username": "johndoe",
-        "email": "john.doe@example.com"
-    }
+    context.url = f"{context.base_url}{endpoint}]"
+    context.user_payload = context.test_data["users"]["valid"]
     logging.info(f"Prepared POST endpoint: {context.url} with payload {context.user_payload}")
 
 @when("I send a POST request with user data")
