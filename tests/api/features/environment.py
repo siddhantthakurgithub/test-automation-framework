@@ -16,7 +16,7 @@ def before_all(context):
     # Load .env file
     load_dotenv()  # loads from root .env by default
 
-    context.base_url = os.getenv("BASE_URL")
+    context.base_url = os.getenv("BASE_URL_API")
     context.token = os.getenv("TOKEN")
 
     context.headers = {

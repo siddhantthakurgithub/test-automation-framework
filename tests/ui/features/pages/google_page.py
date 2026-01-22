@@ -1,28 +1,29 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import logging
-import time
+from selenium.webdriver.common.by import By
+
 
 class GooglePage:
-    def __init__(self, driver):
+    SEARCH_BOX = (By.NAME, "q")
+    RESULT_HEADINGS = (By.CSS_SELECTOR, "h3")
+    
+    def __init__(self, driver, timeout=10,base_url=None):
         self.driver = driver
-        self.url = "https://www.google.com"
-        self.search_box = (By.NAME, "q")
-        self.result_headings = (By.CSS_SELECTOR, "h3")
+        self.wait = WebDriverWait(driver, timeout)
+        self.url = base_url
 
     def open(self):
         self.driver.get(self.url)
+        self.wait.until(EC.visibility_of_element_located(GooglePage.SEARCH_BOX))
         logging.info("Opened Google homepage")
 
     def search(self, query):
-        box = self.driver.find_element(*self.search_box)
+        box = self.wait.until(EC.element_to_be_clickable(GooglePage.SEARCH_BOX))
         box.clear()
-        box.send_keys(query)
-        box.send_keys(Keys.RETURN)
-        logging.info(f"Searched for '{query}'")
-        time.sleep(2)
+        box.send_keys(query, Keys.RETURN)
 
-    def validate_results(self, query):
-        results = self.driver.find_elements(*self.result_headings)
-        assert any(query.lower() in r.text.lower() for r in results), f"'{query}' not found in results"
-        logging.info(f"Results validated for '{query}'")
+    def get_results_text(self):
+        self.wait.until(EC.presence_of_all_elements_located(GooglePage.RESULT_HEADINGS))
+        return [r.text for r in self.driver.find_elements(GooglePage.RESULT_HEADINGS)]

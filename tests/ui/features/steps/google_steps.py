@@ -3,7 +3,7 @@ from pages.google_page import GooglePage
 
 @given("I open the Google homepage")
 def step_open_google(context):
-    context.google_page = GooglePage(context.driver)
+    context.google_page = GooglePage(context.driver, base_url=context.base_url)
     context.google_page.open()
 
 @when('I search for "{query}"')
