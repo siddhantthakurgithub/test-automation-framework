@@ -1,4 +1,4 @@
-# Automation Framework (Behave + Python + REST + Selenium)
+# Automation Framework (Behave + Python + REST + Selenium) 
 
 This framework supports **API, UI, and E2E testing** using **Behave (BDD)**. It is structured for modular, scalable automation with automatic logging, reporting, and tag-driven execution.
 
